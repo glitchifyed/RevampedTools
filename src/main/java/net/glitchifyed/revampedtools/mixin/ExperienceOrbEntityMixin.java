@@ -1,32 +1,18 @@
 package net.glitchifyed.revampedtools.mixin;
 
-import net.minecraft.item.ToolMaterial;
-import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.registry.tag.ItemTags;
-import org.spongepowered.asm.mixin.Final;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Mutable;
-import org.spongepowered.asm.mixin.Shadow;
+import net.glitchifyed.revampedtools.RevampedTools;
+import net.minecraft.entity.ExperienceOrbEntity;
+import net.minecraft.server.network.ServerPlayerEntity;
+import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(ToolMaterial.class)
-public class ToolMaterialMixin {
-    @Mutable @Shadow @Final public static ToolMaterial GOLD;
-    @Mutable @Shadow @Final public static ToolMaterial DIAMOND;
-    @Mutable @Shadow @Final public static ToolMaterial NETHERITE;
-    @Mutable @Shadow @Final public static ToolMaterial IRON;
-    @Mutable @Shadow @Final public static ToolMaterial STONE;
-    @Mutable @Shadow @Final public static ToolMaterial WOOD;
-
-    @Inject(method = "<clinit>", at = @At("TAIL"))
-    private static void modifyTools(CallbackInfo ci) {
-        WOOD = new ToolMaterial(BlockTags.INCORRECT_FOR_WOODEN_TOOL, 60, 8, 0, 1, ItemTags.WOODEN_TOOL_MATERIALS);
-        STONE = new ToolMaterial(BlockTags.INCORRECT_FOR_STONE_TOOL, 600, 5, 1, 5, ItemTags.STONE_TOOL_MATERIALS);
-        IRON = new ToolMaterial(BlockTags.INCORRECT_FOR_IRON_TOOL, 400, 10, 3, 10, ItemTags.IRON_TOOL_MATERIALS);
-        GOLD = new ToolMaterial(BlockTags.INCORRECT_FOR_GOLD_TOOL, 130, 18, 5, 50, ItemTags.GOLD_TOOL_MATERIALS);
-        DIAMOND = new ToolMaterial(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 3000, 8, 2, 20, ItemTags.DIAMOND_TOOL_MATERIALS);
-        NETHERITE = new ToolMaterial(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 1200, 10, 4, 10, ItemTags.NETHERITE_TOOL_MATERIALS);
+@Mixin(ExperienceOrbEntity.class)
+public class ExperienceOrbEntityMixin {
+    // i tried removing REPAIR_WITH_XP from mending but im not very good with mixins yet, so i just decided to bypass the repair method entirely
+    @Inject(method = "repairPlayerGears", at = @At("HEAD"), cancellable = true)
+    private void repairPlayerGears(ServerPlayerEntity player, int amount, CallbackInfoReturnable<Integer> cir) {
+        cir.setReturnValue(amount);
     }
 }

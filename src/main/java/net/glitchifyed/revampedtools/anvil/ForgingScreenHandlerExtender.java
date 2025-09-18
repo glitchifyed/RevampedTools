@@ -1,4 +1,9 @@
 package net.glitchifyed.revampedtools.anvil;
 
-public class ForgingScreenHandlerExtender {
+import net.minecraft.inventory.CraftingResultInventory;
+import net.minecraft.inventory.Inventory;
+
+public interface ForgingScreenHandlerExtender {
+    Inventory revampedtools$getInput();
+    CraftingResultInventory revampedtools$getOutput();
 }

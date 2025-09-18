@@ -17,7 +17,7 @@
       "net.glitchifyed.revampedtools.client.RevampedtoolsClient"
     ],
     "main": [
-      "net.glitchifyed.revampedtools.Revampedtools"
+      "net.glitchifyed.revampedtools.RevampedTools"
     ]
   },
   "mixins": [

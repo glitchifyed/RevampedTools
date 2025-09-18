@@ -1,0 +1,14 @@
+{
+  "gamerule.rtConsistentDragonExp": "Ender dragon drops the same exp every death",
+  "gamerule.rtReworkedExpLevels": "Rework the exp levelling system",
+  "gamerule.rtReworkedAnvils": "Reworked anvils",
+  "gamerule.rtPersistentEquipment": "Items don't break and are instead disabled at 0 durability",
+  "gamerule.rtDisplayDurability": "Display item durability",
+
+  "gamerule.rtMaxUnbreakingFactor": "Additional durability factor (* 10) given by Unbreaking III",
+
+  "gamerule.category.revampedtools": "Revamped Tools",
+
+  "item.revampedtools.persistentBroken": "Broken equipment",
+  "item.revampedtools.persistentExplainer": "Unusable until repaired"
+}
