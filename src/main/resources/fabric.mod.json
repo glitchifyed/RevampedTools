@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "revampedtools",
+  "version": "${version}",
+  "name": "Revamped Tools",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/revampedtools/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-datagen": [
+      "net.glitchifyed.revampedtools.client.RevampedtoolsDataGenerator"
+    ],
+    "client": [
+      "net.glitchifyed.revampedtools.client.RevampedtoolsClient"
+    ],
+    "main": [
+      "net.glitchifyed.revampedtools.Revampedtools"
+    ]
+  },
+  "mixins": [
+    "revampedtools.mixins.json",
+    {
+      "config": "revampedtools.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
