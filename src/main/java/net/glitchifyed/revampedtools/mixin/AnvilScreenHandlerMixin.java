@@ -146,11 +146,14 @@ public class AnvilScreenHandlerMixin {
                             modified = true;
                         }
 
-                        if (!modified && equalItems && primaryInputStack.isDamageable() && (primaryInputStack.getDamage() != 0 && secondaryInputStack.getDamage() != 0)) {
+                        if (!modified && equalItems && primaryInputStack.isDamageable() && (primaryInputStack.getDamage() != 0 || secondaryInputStack.getDamage() != 0)) {
                             modified = true;
                         }
 
                         EnchantmentHelper.set(outputStack, outputComponent);
+                    }
+                    else {
+                        modified = false;
                     }
                 }
                 else if (primaryInputStack.canRepairWith(secondaryInputStack)) {

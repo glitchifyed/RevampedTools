@@ -27,6 +27,14 @@ public class RevampedTools implements ModInitializer {
     }
 
     public static int scaleLevelCostToGamerule(int levels) {
+        if (levels == 0) {
+            return 0;
+        }
+
+        if (RTGamerules.REBALANCED_EXP_LEVELS.get()) {
+            return (int)Math.ceil(levels / 2f);
+        }
+
         return levels;
     }
 
